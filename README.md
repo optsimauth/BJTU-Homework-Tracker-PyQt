@@ -1,87 +1,108 @@
-# BJTU-Homework-Tracker
+# BJTU-Homework-Tracker-PyQt
+这是一个GUI界面
 
-![Visitors](https://api.visitorbadge.io/api/visitors?path=ymzhang-cs%2FBJTU-Homework-Tracker&countColor=%23263759)
+## 使用示例
+```python
+if __name__ == '__main__':
+    homework_list = [
+        {
+            "course_name": "数学",
+            "title": "数学作业",
+            "content": "解答习题1-10",
+            "submitCount": "20",
+            "allCount": "30",
+            "open_date": "2024-01-01",
+            "end_time": "2024-02-15",
+            "subStatus": "未提交"
+        },
+        {
+            "course_name": "英语",
+            "title": "英语作业",
+            "content": "阅读理解",
+            "submitCount": "15",
+            "allCount": "30",
+            "open_date": "2024-01-15",
+            "end_time": "2024-02-20",
+            "subStatus": "已提交",
+        },
+        {
+            "course_name": "数学",
+            "title": "数学作业",
+            "content": "阅读理解",
+            "submitCount": "15",
+            "allCount": "30",
+            "open_date": "2024-01-15",
+            "end_time": "2024-02-20",
+            "subStatus": "已提交",
+        }
+    ]
+    display_elements ={
+                "course_name": "课程名称",
+                "title": "作业标题",
+                "content": "作业说明",
+                "submitCount": "已提交人数",
+                "allCount": "总人数",
+                "open_date": "发布日期",
+                "end_time": "截止日期",
+                "subStatus": "提交状态",
+                "submit_url": "提交链接"
+    }
+    show_homework_window(homework_list,display_elements)
 
-![Latest Tag](https://img.shields.io/github/v/tag/ymzhang-cs/BJTU-Homework-Tracker)
-![GitHub contributors](https://img.shields.io/github/contributors/ymzhang-cs/BJTU-Homework-Tracker)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/t/ymzhang-cs/BJTU-Homework-Tracker)
-![GitHub last commit](https://img.shields.io/github/last-commit/ymzhang-cs/BJTU-Homework-Tracker)
-![GitHub](https://img.shields.io/github/license/ymzhang-cs/BJTU-Homework-Tracker)
+"""
+全部的display_elements
+display_elements = {
+    "id": "作业ID",
+    "create_date": "创建日期",
+    "course_id": "课程ID",
+    "course_sched_id": "课程安排ID",
+    "course_name": "课程名称",
+    "comment_num": "评论数",
+    "content": "作业内容",
+    "title": "作业标题",
+    "user_id": "用户ID",
+    "praise_num": "点赞数",
+    "is_fz": "是否分组",
+    "content_type": "内容类型",
+    "calendar_id": "日历ID",
+    "end_time": "截止日期",
+    "open_date": "发布日期",
+    "score": "总分",
+    "moudel_id": "模块ID",
+    "isOpen": "是否公开",
+    "status": "状态",
+    "submitCount": "已提交人数",
+    "allCount": "总人数",
+    "excellentCount": "优秀作业数",
+    "is_publish_answer": "是否发布答案",
+    "review_method": "批改方式",
+    "makeup_flag": "补交标志",
+    "is_repeat": "是否重复提交",
+    "makeup_time": "补交时间",
+    "snId": "序列ID",
+    "scoreId": "成绩ID",
+    "subTime": "提交时间",
+    "subStatus": "提交状态",
+    "return_flag": "退回标志",
+    "return_num": "退回次数",
+    "is_excellent": "是否优秀",
+    "stu_score": "学生成绩",
+    "refAnswer": "参考答案",
+    "pg_user_id": "批改用户ID",
+    "pg_user_name": "批改用户名",
+    "returnContent": "退回内容",
+    "lastScore": "最终成绩"
+}
+"""
 
 
-北京交通大学智慧课程平台作业抓取
-
-支持在登录后自动化抓取作业列表，在筛选后进行可视化输出。
-
-支持的登录方式：
-
-- 智慧课程平台账号登录
-- MIS 系统登录
-- Cookie登录
-
-支持的作业筛选方式
-
-- 按完成状态：未完成/已完成/全部
-- 按课程名：支持白名单/黑名单
-- 按距离截止时间
-- 按已过期时间
-
-支持的显示/保存结果方式
-
-- HTML页面渲染
-- 纯文本显示
-
-## 快速上手
-
-**0. 克隆仓库**
-
-```bash
-git clone https://github.com/ymzhang-cs/BJTU-Homework-Tracker.git
-cd BJTU-Homework-Tracker
 ```
 
-**1. 安装依赖**
 
-```bash
-pip install -r requirements.txt
-```
 
-**2. 配置 config.yaml（可选，推荐）**
 
-工具支持 config 工作流配置和命令行实时配置两种控制方式。后者直接跳至第3步即可，下面介绍 config 配置方式。
+效果展示:
+![](https://s2.loli.net/2024/11/28/uUMbSvEPdtXi2hx.png)
 
-拷贝 config_sample.yaml 为 config.yaml，并且参考相关注释填写即可。
 
-**3. 运行 run.py**
 
-```bash
-python run.py
-```
-
-> [!NOTE]
-> 如果选择使用 MIS 系统登录，请确保已经安装了 Chrome 浏览器或 Edge 浏览器（后续会支持更多）。
-> 
-> 第一次使用会自动下载对应的 WebDriver，如果下载失败请手动下载并放置在浏览器根目录（如 `C:\Program Files\Google\Chrome\Application`）下。
-
-## TODO
-
-- [ ] 使用 Schema 验证配置文件 [#8](https://github.com/ymzhang-cs/BJTU-Homework-Tracker/issues/8)
-- [ ] 更好的 WebDriver 配置模式 [#9](https://github.com/ymzhang-cs/BJTU-Homework-Tracker/issues/9)
-- [ ] 考虑使用 PyInquirer 交互式配置 [#16](https://github.com/ymzhang-cs/BJTU-Homework-Tracker/issues/16)
-
-## Contributing
-
-欢迎提交 PR 和 issue，为这个项目贡献你的力量。
-
-如果你有任何问题或者想法，请提交 issue。 若要认领 issue，请在 issue 下评论，我们会将 issue 分配给你。
-如果有想要实现的功能，请先提交 issue 并认领，然后再提交 PR。
-
-与 issue 关联的 PR 请在提交 PR 时在 PR 描述中注明 `Fixes #xx`，以便 issue 关联。没有关联任何 issue 的 PR 会被关闭。
-
-## License
-
-我们采用 [MIT](LICENSE) 开源许可证。
-
-## References
-
-- [如何获取Cookie](FOR_NEWERS.md)
